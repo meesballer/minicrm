@@ -21,9 +21,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('companies', 'CompanyController');
-Route::resource('employees', 'EmployeeController');
-Route::resource('roles', 'RoleController');
+Route::resources([
+    'employees' => EmployeeController::class,
+    'companies' => CompanyController::class,
 
+]);
+//Route::get('/companies', [CompanyController::Controller::class, 'index']);
 
 require __DIR__.'/auth.php';
